@@ -62,13 +62,13 @@ export function TabelPengiriman<TData, TValue>({
       {/* Bagian Filter dan Tombol Aksi */}
       <div className="flex items-center justify-between py-4">
         <Input
-          placeholder="Filter berdasarkan customer..."
+          placeholder="Filter berdasarkan Nama PT/CV..."
           value={
             // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
-            (table.getColumn("customer")?.getFilterValue() as string) ?? ""
+            (table.getColumn("namaPTCV")?.getFilterValue() as string) ?? ""
           }
           onChange={(event) =>
-            table.getColumn("customer")?.setFilterValue(event.target.value)
+            table.getColumn("namaPTCV")?.setFilterValue(event.target.value)
           }
           className="max-w-sm"
         />
