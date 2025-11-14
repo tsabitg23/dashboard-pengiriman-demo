@@ -35,7 +35,7 @@ function HalamanPengirimanComponent() {
 
   return (
     <div className="container mx-auto py-10 px-4">
-      <h1 className="text-3xl font-bold mb-6">Daftar Pengiriman</h1>
+      <h1 className="text-3xl font-bold mb-6">List Pengiriman</h1>
 
       {/* Kirim data ke komponen tabel */}
       <TabelPengiriman columns={pengirimanColumns} data={shipments} />
