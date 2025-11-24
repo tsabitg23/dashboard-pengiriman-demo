@@ -14,6 +14,7 @@ import { Route as DashboardPengirimanIndexRouteImport } from './routes/dashboard
 import { Route as DemoStartServerFuncsRouteImport } from './routes/demo/start.server-funcs'
 import { Route as DemoStartApiRequestRouteImport } from './routes/demo/start.api-request'
 import { Route as DemoApiNamesRouteImport } from './routes/demo/api.names'
+import { Route as DashboardPengirimanCreateRouteImport } from './routes/dashboard/pengiriman/create'
 import { Route as DashboardPengirimanIdRouteImport } from './routes/dashboard/pengiriman/$id'
 import { Route as DemoStartSsrIndexRouteImport } from './routes/demo/start.ssr.index'
 import { Route as DemoStartSsrSpaModeRouteImport } from './routes/demo/start.ssr.spa-mode'
@@ -46,6 +47,12 @@ const DemoApiNamesRoute = DemoApiNamesRouteImport.update({
   path: '/demo/api/names',
   getParentRoute: () => rootRouteImport,
 } as any)
+const DashboardPengirimanCreateRoute =
+  DashboardPengirimanCreateRouteImport.update({
+    id: '/dashboard/pengiriman/create',
+    path: '/dashboard/pengiriman/create',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const DashboardPengirimanIdRoute = DashboardPengirimanIdRouteImport.update({
   id: '/dashboard/pengiriman/$id',
   path: '/dashboard/pengiriman/$id',
@@ -75,6 +82,7 @@ const DemoStartSsrDataOnlyRoute = DemoStartSsrDataOnlyRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/dashboard/pengiriman/$id': typeof DashboardPengirimanIdRoute
+  '/dashboard/pengiriman/create': typeof DashboardPengirimanCreateRoute
   '/demo/api/names': typeof DemoApiNamesRoute
   '/demo/start/api-request': typeof DemoStartApiRequestRoute
   '/demo/start/server-funcs': typeof DemoStartServerFuncsRoute
@@ -87,6 +95,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/dashboard/pengiriman/$id': typeof DashboardPengirimanIdRoute
+  '/dashboard/pengiriman/create': typeof DashboardPengirimanCreateRoute
   '/demo/api/names': typeof DemoApiNamesRoute
   '/demo/start/api-request': typeof DemoStartApiRequestRoute
   '/demo/start/server-funcs': typeof DemoStartServerFuncsRoute
@@ -100,6 +109,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/dashboard/pengiriman/$id': typeof DashboardPengirimanIdRoute
+  '/dashboard/pengiriman/create': typeof DashboardPengirimanCreateRoute
   '/demo/api/names': typeof DemoApiNamesRoute
   '/demo/start/api-request': typeof DemoStartApiRequestRoute
   '/demo/start/server-funcs': typeof DemoStartServerFuncsRoute
@@ -114,6 +124,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/dashboard/pengiriman/$id'
+    | '/dashboard/pengiriman/create'
     | '/demo/api/names'
     | '/demo/start/api-request'
     | '/demo/start/server-funcs'
@@ -126,6 +137,7 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/dashboard/pengiriman/$id'
+    | '/dashboard/pengiriman/create'
     | '/demo/api/names'
     | '/demo/start/api-request'
     | '/demo/start/server-funcs'
@@ -138,6 +150,7 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/dashboard/pengiriman/$id'
+    | '/dashboard/pengiriman/create'
     | '/demo/api/names'
     | '/demo/start/api-request'
     | '/demo/start/server-funcs'
@@ -151,6 +164,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   DashboardPengirimanIdRoute: typeof DashboardPengirimanIdRoute
+  DashboardPengirimanCreateRoute: typeof DashboardPengirimanCreateRoute
   DemoApiNamesRoute: typeof DemoApiNamesRoute
   DemoStartApiRequestRoute: typeof DemoStartApiRequestRoute
   DemoStartServerFuncsRoute: typeof DemoStartServerFuncsRoute
@@ -198,6 +212,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DemoApiNamesRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/dashboard/pengiriman/create': {
+      id: '/dashboard/pengiriman/create'
+      path: '/dashboard/pengiriman/create'
+      fullPath: '/dashboard/pengiriman/create'
+      preLoaderRoute: typeof DashboardPengirimanCreateRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/dashboard/pengiriman/$id': {
       id: '/dashboard/pengiriman/$id'
       path: '/dashboard/pengiriman/$id'
@@ -239,6 +260,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   DashboardPengirimanIdRoute: DashboardPengirimanIdRoute,
+  DashboardPengirimanCreateRoute: DashboardPengirimanCreateRoute,
   DemoApiNamesRoute: DemoApiNamesRoute,
   DemoStartApiRequestRoute: DemoStartApiRequestRoute,
   DemoStartServerFuncsRoute: DemoStartServerFuncsRoute,
