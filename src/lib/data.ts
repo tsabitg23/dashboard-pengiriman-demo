@@ -56,6 +56,12 @@ export const dummyData: Array<Shipment> = [
     },
 ]
 
+export const getShipmentById = async (id: string): Promise<Shipment | undefined> => {
+  // Simulasi delay network
+  await new Promise((r) => setTimeout(r, 100))
+  return dummyData.find((shipment) => shipment.id === id)
+}
+
 export const ptCvList = [
     "PT. Maju Jaya",
     "CV. Abadi Sentosa",

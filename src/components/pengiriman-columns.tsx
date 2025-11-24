@@ -1,8 +1,8 @@
 "use client"
 
 import { MoreHorizontal } from "lucide-react"
+import { Link } from '@tanstack/react-router'
 import type { ColumnDef } from "@tanstack/react-table"
-
 import type { Shipment } from "@/lib/data.ts"
 import { Button } from "@/components/ui/button.tsx" // Sesuaikan path import
 import { Checkbox } from "@/components/ui/checkbox.tsx" // Sesuaikan path import
@@ -101,7 +101,15 @@ export const pengirimanColumns: Array<ColumnDef<Shipment>> = [
               Salin No. Resi
             </DropdownMenuItem>
             <DropdownMenuSeparator />
-            <DropdownMenuItem>Lihat Detail</DropdownMenuItem>
+            <DropdownMenuItem asChild>
+              <Link
+                to="/dashboard/pengiriman/$id"
+                params={{ id: shipment.id }}
+                className="cursor-pointer"
+              >
+                Lihat Detail
+              </Link>
+            </DropdownMenuItem>
             <DropdownMenuItem>Edit Pengiriman</DropdownMenuItem>
             <DropdownMenuItem className="text-red-600">Hapus</DropdownMenuItem>
           </DropdownMenuContent>

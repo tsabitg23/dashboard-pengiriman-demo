@@ -16,7 +16,7 @@ const fetchShipments = async (): Promise<Array<z.infer<typeof shipmentSchema>>> 
 }
 
 // --- Definisi Rute (Route Definition) ---
-export const Route = createFileRoute('/dashboard/pengiriman')({
+export const Route = createFileRoute('/dashboard/pengiriman/')({
   // 1. Loader: Mengambil data di sisi server (atau sebelum navigasi)
   loader: async () => {
     console.log("Fetching data untuk rute pengiriman...")
