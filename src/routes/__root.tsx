@@ -2,10 +2,11 @@ import { HeadContent, Scripts, createRootRoute } from '@tanstack/react-router'
 import { TanStackRouterDevtoolsPanel } from '@tanstack/react-router-devtools'
 import { TanStackDevtools } from '@tanstack/react-devtools'
 
-import Header from '../components/Header'
+// import Header from '../components/Header'
 
 import appCss from '../styles.css?url'
-
+import { SidebarInset, SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar"
+import { AppSidebar } from "@/components/app-sidebar"
 import { Toaster } from "@/components/ui/sonner"
 
 export const Route = createRootRoute({
@@ -40,8 +41,19 @@ function RootDocument({ children }: { children: React.ReactNode }) {
         <HeadContent />
       </head>
       <body>
-        <Header />
-        {children}
+      <SidebarProvider>
+        <AppSidebar/>
+
+        <SidebarInset>
+          {/* Header kecil di atas konten untuk tombol trigger */}
+          <SidebarTrigger className="-ml-1" />
+
+          {/* Konten Halaman */}
+          <div className="flex flex-1 flex-col gap-4 p-4 pt-0">
+            {children}
+          </div>
+        </SidebarInset>
+      </SidebarProvider>
         <TanStackDevtools
           config={{
             position: 'bottom-right',
