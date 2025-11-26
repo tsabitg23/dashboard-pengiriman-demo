@@ -12,6 +12,13 @@ export const shipmentSchema = z.object({
     alamatTujuan: z.string(),
     pic: z.string(),
     berat: z.number(),
+
+    // --- FIELD BARU (Opsional/Nullable) ---
+    tanggalDiterima: z.string().optional(),       // Kapan barang diterima
+    tanggalInvoiceBalik: z.string().optional(),   // Kapan invoice balik diterima
+    tanggalAngkutExpedisiLain: z.string().optional(), // Kapan diangkut expedisi lain
+    noPolisiExpedisiLain: z.string().optional(),  // Nopol kendaraan
+    driverExpedisiLain: z.string().optional(),    // Nama sopir
 })
 
 export type Shipment = z.infer<typeof shipmentSchema>

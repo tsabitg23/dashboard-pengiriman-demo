@@ -10,7 +10,7 @@ import {
   CardTitle,
 } from '@/components/ui/card'
 
-export const Route = createFileRoute('/dashboard/pengiriman/$id')({
+export const Route = createFileRoute('/dashboard/pengiriman/$id/')({
   // Loader untuk mengambil data berdasarkan ID dari URL
   loader: async ({ params }) => {
     const shipment = await getShipmentById(params.id)

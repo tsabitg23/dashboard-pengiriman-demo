@@ -110,7 +110,15 @@ export const pengirimanColumns: Array<ColumnDef<Shipment>> = [
                 Lihat Detail
               </Link>
             </DropdownMenuItem>
-            <DropdownMenuItem>Edit Pengiriman</DropdownMenuItem>
+            <DropdownMenuItem asChild>
+              <Link
+                to="/dashboard/pengiriman/$id/edit"
+                params={{ id: shipment.id }}
+                className="cursor-pointer"
+              >
+                Update Pengiriman
+              </Link>
+            </DropdownMenuItem>
             <DropdownMenuItem className="text-red-600">Hapus</DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>

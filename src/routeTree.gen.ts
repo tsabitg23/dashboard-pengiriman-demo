@@ -15,11 +15,12 @@ import { Route as DemoStartServerFuncsRouteImport } from './routes/demo/start.se
 import { Route as DemoStartApiRequestRouteImport } from './routes/demo/start.api-request'
 import { Route as DemoApiNamesRouteImport } from './routes/demo/api.names'
 import { Route as DashboardPengirimanCreateRouteImport } from './routes/dashboard/pengiriman/create'
-import { Route as DashboardPengirimanIdRouteImport } from './routes/dashboard/pengiriman/$id'
 import { Route as DemoStartSsrIndexRouteImport } from './routes/demo/start.ssr.index'
+import { Route as DashboardPengirimanIdIndexRouteImport } from './routes/dashboard/pengiriman/$id/index'
 import { Route as DemoStartSsrSpaModeRouteImport } from './routes/demo/start.ssr.spa-mode'
 import { Route as DemoStartSsrFullSsrRouteImport } from './routes/demo/start.ssr.full-ssr'
 import { Route as DemoStartSsrDataOnlyRouteImport } from './routes/demo/start.ssr.data-only'
+import { Route as DashboardPengirimanIdEditRouteImport } from './routes/dashboard/pengiriman/$id/edit'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -53,16 +54,17 @@ const DashboardPengirimanCreateRoute =
     path: '/dashboard/pengiriman/create',
     getParentRoute: () => rootRouteImport,
   } as any)
-const DashboardPengirimanIdRoute = DashboardPengirimanIdRouteImport.update({
-  id: '/dashboard/pengiriman/$id',
-  path: '/dashboard/pengiriman/$id',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const DemoStartSsrIndexRoute = DemoStartSsrIndexRouteImport.update({
   id: '/demo/start/ssr/',
   path: '/demo/start/ssr/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const DashboardPengirimanIdIndexRoute =
+  DashboardPengirimanIdIndexRouteImport.update({
+    id: '/dashboard/pengiriman/$id/',
+    path: '/dashboard/pengiriman/$id/',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const DemoStartSsrSpaModeRoute = DemoStartSsrSpaModeRouteImport.update({
   id: '/demo/start/ssr/spa-mode',
   path: '/demo/start/ssr/spa-mode',
@@ -78,100 +80,113 @@ const DemoStartSsrDataOnlyRoute = DemoStartSsrDataOnlyRouteImport.update({
   path: '/demo/start/ssr/data-only',
   getParentRoute: () => rootRouteImport,
 } as any)
+const DashboardPengirimanIdEditRoute =
+  DashboardPengirimanIdEditRouteImport.update({
+    id: '/dashboard/pengiriman/$id/edit',
+    path: '/dashboard/pengiriman/$id/edit',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/dashboard/pengiriman/$id': typeof DashboardPengirimanIdRoute
   '/dashboard/pengiriman/create': typeof DashboardPengirimanCreateRoute
   '/demo/api/names': typeof DemoApiNamesRoute
   '/demo/start/api-request': typeof DemoStartApiRequestRoute
   '/demo/start/server-funcs': typeof DemoStartServerFuncsRoute
   '/dashboard/pengiriman': typeof DashboardPengirimanIndexRoute
+  '/dashboard/pengiriman/$id/edit': typeof DashboardPengirimanIdEditRoute
   '/demo/start/ssr/data-only': typeof DemoStartSsrDataOnlyRoute
   '/demo/start/ssr/full-ssr': typeof DemoStartSsrFullSsrRoute
   '/demo/start/ssr/spa-mode': typeof DemoStartSsrSpaModeRoute
+  '/dashboard/pengiriman/$id': typeof DashboardPengirimanIdIndexRoute
   '/demo/start/ssr': typeof DemoStartSsrIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/dashboard/pengiriman/$id': typeof DashboardPengirimanIdRoute
   '/dashboard/pengiriman/create': typeof DashboardPengirimanCreateRoute
   '/demo/api/names': typeof DemoApiNamesRoute
   '/demo/start/api-request': typeof DemoStartApiRequestRoute
   '/demo/start/server-funcs': typeof DemoStartServerFuncsRoute
   '/dashboard/pengiriman': typeof DashboardPengirimanIndexRoute
+  '/dashboard/pengiriman/$id/edit': typeof DashboardPengirimanIdEditRoute
   '/demo/start/ssr/data-only': typeof DemoStartSsrDataOnlyRoute
   '/demo/start/ssr/full-ssr': typeof DemoStartSsrFullSsrRoute
   '/demo/start/ssr/spa-mode': typeof DemoStartSsrSpaModeRoute
+  '/dashboard/pengiriman/$id': typeof DashboardPengirimanIdIndexRoute
   '/demo/start/ssr': typeof DemoStartSsrIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/dashboard/pengiriman/$id': typeof DashboardPengirimanIdRoute
   '/dashboard/pengiriman/create': typeof DashboardPengirimanCreateRoute
   '/demo/api/names': typeof DemoApiNamesRoute
   '/demo/start/api-request': typeof DemoStartApiRequestRoute
   '/demo/start/server-funcs': typeof DemoStartServerFuncsRoute
   '/dashboard/pengiriman/': typeof DashboardPengirimanIndexRoute
+  '/dashboard/pengiriman/$id/edit': typeof DashboardPengirimanIdEditRoute
   '/demo/start/ssr/data-only': typeof DemoStartSsrDataOnlyRoute
   '/demo/start/ssr/full-ssr': typeof DemoStartSsrFullSsrRoute
   '/demo/start/ssr/spa-mode': typeof DemoStartSsrSpaModeRoute
+  '/dashboard/pengiriman/$id/': typeof DashboardPengirimanIdIndexRoute
   '/demo/start/ssr/': typeof DemoStartSsrIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
-    | '/dashboard/pengiriman/$id'
     | '/dashboard/pengiriman/create'
     | '/demo/api/names'
     | '/demo/start/api-request'
     | '/demo/start/server-funcs'
     | '/dashboard/pengiriman'
+    | '/dashboard/pengiriman/$id/edit'
     | '/demo/start/ssr/data-only'
     | '/demo/start/ssr/full-ssr'
     | '/demo/start/ssr/spa-mode'
+    | '/dashboard/pengiriman/$id'
     | '/demo/start/ssr'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
-    | '/dashboard/pengiriman/$id'
     | '/dashboard/pengiriman/create'
     | '/demo/api/names'
     | '/demo/start/api-request'
     | '/demo/start/server-funcs'
     | '/dashboard/pengiriman'
+    | '/dashboard/pengiriman/$id/edit'
     | '/demo/start/ssr/data-only'
     | '/demo/start/ssr/full-ssr'
     | '/demo/start/ssr/spa-mode'
+    | '/dashboard/pengiriman/$id'
     | '/demo/start/ssr'
   id:
     | '__root__'
     | '/'
-    | '/dashboard/pengiriman/$id'
     | '/dashboard/pengiriman/create'
     | '/demo/api/names'
     | '/demo/start/api-request'
     | '/demo/start/server-funcs'
     | '/dashboard/pengiriman/'
+    | '/dashboard/pengiriman/$id/edit'
     | '/demo/start/ssr/data-only'
     | '/demo/start/ssr/full-ssr'
     | '/demo/start/ssr/spa-mode'
+    | '/dashboard/pengiriman/$id/'
     | '/demo/start/ssr/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  DashboardPengirimanIdRoute: typeof DashboardPengirimanIdRoute
   DashboardPengirimanCreateRoute: typeof DashboardPengirimanCreateRoute
   DemoApiNamesRoute: typeof DemoApiNamesRoute
   DemoStartApiRequestRoute: typeof DemoStartApiRequestRoute
   DemoStartServerFuncsRoute: typeof DemoStartServerFuncsRoute
   DashboardPengirimanIndexRoute: typeof DashboardPengirimanIndexRoute
+  DashboardPengirimanIdEditRoute: typeof DashboardPengirimanIdEditRoute
   DemoStartSsrDataOnlyRoute: typeof DemoStartSsrDataOnlyRoute
   DemoStartSsrFullSsrRoute: typeof DemoStartSsrFullSsrRoute
   DemoStartSsrSpaModeRoute: typeof DemoStartSsrSpaModeRoute
+  DashboardPengirimanIdIndexRoute: typeof DashboardPengirimanIdIndexRoute
   DemoStartSsrIndexRoute: typeof DemoStartSsrIndexRoute
 }
 
@@ -219,18 +234,18 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DashboardPengirimanCreateRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/dashboard/pengiriman/$id': {
-      id: '/dashboard/pengiriman/$id'
-      path: '/dashboard/pengiriman/$id'
-      fullPath: '/dashboard/pengiriman/$id'
-      preLoaderRoute: typeof DashboardPengirimanIdRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/demo/start/ssr/': {
       id: '/demo/start/ssr/'
       path: '/demo/start/ssr'
       fullPath: '/demo/start/ssr'
       preLoaderRoute: typeof DemoStartSsrIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/dashboard/pengiriman/$id/': {
+      id: '/dashboard/pengiriman/$id/'
+      path: '/dashboard/pengiriman/$id'
+      fullPath: '/dashboard/pengiriman/$id'
+      preLoaderRoute: typeof DashboardPengirimanIdIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/demo/start/ssr/spa-mode': {
@@ -254,20 +269,28 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DemoStartSsrDataOnlyRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/dashboard/pengiriman/$id/edit': {
+      id: '/dashboard/pengiriman/$id/edit'
+      path: '/dashboard/pengiriman/$id/edit'
+      fullPath: '/dashboard/pengiriman/$id/edit'
+      preLoaderRoute: typeof DashboardPengirimanIdEditRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  DashboardPengirimanIdRoute: DashboardPengirimanIdRoute,
   DashboardPengirimanCreateRoute: DashboardPengirimanCreateRoute,
   DemoApiNamesRoute: DemoApiNamesRoute,
   DemoStartApiRequestRoute: DemoStartApiRequestRoute,
   DemoStartServerFuncsRoute: DemoStartServerFuncsRoute,
   DashboardPengirimanIndexRoute: DashboardPengirimanIndexRoute,
+  DashboardPengirimanIdEditRoute: DashboardPengirimanIdEditRoute,
   DemoStartSsrDataOnlyRoute: DemoStartSsrDataOnlyRoute,
   DemoStartSsrFullSsrRoute: DemoStartSsrFullSsrRoute,
   DemoStartSsrSpaModeRoute: DemoStartSsrSpaModeRoute,
+  DashboardPengirimanIdIndexRoute: DashboardPengirimanIdIndexRoute,
   DemoStartSsrIndexRoute: DemoStartSsrIndexRoute,
 }
 export const routeTree = rootRouteImport
