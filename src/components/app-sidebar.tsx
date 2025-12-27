@@ -1,7 +1,8 @@
 import {
   Home,
   Package2,
-  Truck
+  Truck,
+  Receipt
 } from "lucide-react"
 import { Link } from "@tanstack/react-router"
 import {
@@ -28,6 +29,11 @@ const items = [
     title: "List Pengiriman",
     url: "/dashboard/pengiriman",
     icon: Truck,
+  },
+  {
+    title: "Cek Resi",
+    url: "/cek-resi",
+    icon: Receipt,
   },
 ]
 

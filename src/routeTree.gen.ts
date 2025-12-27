@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as CekResiIndexRouteImport } from './routes/cek-resi/index'
 import { Route as DashboardPengirimanIndexRouteImport } from './routes/dashboard/pengiriman/index'
 import { Route as DemoStartServerFuncsRouteImport } from './routes/demo/start.server-funcs'
 import { Route as DemoStartApiRequestRouteImport } from './routes/demo/start.api-request'
@@ -25,6 +26,11 @@ import { Route as DashboardPengirimanIdEditRouteImport } from './routes/dashboar
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CekResiIndexRoute = CekResiIndexRouteImport.update({
+  id: '/cek-resi/',
+  path: '/cek-resi/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const DashboardPengirimanIndexRoute =
@@ -89,6 +95,7 @@ const DashboardPengirimanIdEditRoute =
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/cek-resi': typeof CekResiIndexRoute
   '/dashboard/pengiriman/create': typeof DashboardPengirimanCreateRoute
   '/demo/api/names': typeof DemoApiNamesRoute
   '/demo/start/api-request': typeof DemoStartApiRequestRoute
@@ -103,6 +110,7 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/cek-resi': typeof CekResiIndexRoute
   '/dashboard/pengiriman/create': typeof DashboardPengirimanCreateRoute
   '/demo/api/names': typeof DemoApiNamesRoute
   '/demo/start/api-request': typeof DemoStartApiRequestRoute
@@ -118,6 +126,7 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/cek-resi/': typeof CekResiIndexRoute
   '/dashboard/pengiriman/create': typeof DashboardPengirimanCreateRoute
   '/demo/api/names': typeof DemoApiNamesRoute
   '/demo/start/api-request': typeof DemoStartApiRequestRoute
@@ -134,6 +143,7 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/cek-resi'
     | '/dashboard/pengiriman/create'
     | '/demo/api/names'
     | '/demo/start/api-request'
@@ -148,6 +158,7 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/cek-resi'
     | '/dashboard/pengiriman/create'
     | '/demo/api/names'
     | '/demo/start/api-request'
@@ -162,6 +173,7 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/cek-resi/'
     | '/dashboard/pengiriman/create'
     | '/demo/api/names'
     | '/demo/start/api-request'
@@ -177,6 +189,7 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  CekResiIndexRoute: typeof CekResiIndexRoute
   DashboardPengirimanCreateRoute: typeof DashboardPengirimanCreateRoute
   DemoApiNamesRoute: typeof DemoApiNamesRoute
   DemoStartApiRequestRoute: typeof DemoStartApiRequestRoute
@@ -197,6 +210,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/cek-resi/': {
+      id: '/cek-resi/'
+      path: '/cek-resi'
+      fullPath: '/cek-resi'
+      preLoaderRoute: typeof CekResiIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/dashboard/pengiriman/': {
@@ -281,6 +301,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  CekResiIndexRoute: CekResiIndexRoute,
   DashboardPengirimanCreateRoute: DashboardPengirimanCreateRoute,
   DemoApiNamesRoute: DemoApiNamesRoute,
   DemoStartApiRequestRoute: DemoStartApiRequestRoute,
