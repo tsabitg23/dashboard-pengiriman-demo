@@ -42,8 +42,8 @@ function RouteComponent() {
       description: "Data pengiriman baru telah berhasil disimpan.",
     })
 
-    // Redirect kembali ke halaman list setelah sukses
-    navigate({ to: '/dashboard/pengiriman' })
+    // Redirect ke halaman detail resi setelah sukses
+    navigate({ to: `/cek-resi/${data.resi}` })
   }
 
   return (
