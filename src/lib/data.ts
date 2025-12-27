@@ -21,6 +21,10 @@ export const shipmentSchema = z.object({
     driverExpedisiLain: z.string().optional(),    // Nama sopir
 })
 
+export const cekResiSchema = z.object({
+  resi: z.string(),
+})
+
 export type Shipment = z.infer<typeof shipmentSchema>
 
 // Data dummy
