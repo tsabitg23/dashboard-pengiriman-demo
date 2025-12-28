@@ -31,6 +31,12 @@ function RouteComponent() {
     },
   })
   function onSubmit(data: cekResiFormValues) {
+    if (data.resi === "") {
+      toast.error("Error!", {
+        description: "Mohon isi no resi pada field resi.",
+      })
+      return
+    }
     const dataBaru = {
       ...data,
       id: `P-${Math.floor(Math.random() * 1000).toString().padStart(3, '0')}`
@@ -39,11 +45,13 @@ function RouteComponent() {
     console.log("Form sukses disubmit:", dataBaru)
 
     toast.success("Sukses!", {
-      description: "Data pengiriman baru telah berhasil disimpan.",
+      description: "No resi telah terbaca.",
     })
 
     // Redirect ke halaman detail resi setelah sukses
-    navigate({ to: `/cek-resi/${data.resi}` })
+    // navigate({ to: `/cek-resi/${data.resi}` })
+    // @ts-ignore Navigasi hardcode untuk sementara
+      navigate({ to: '/cek-resi/JNE-1234567' })
   }
 
   return (
