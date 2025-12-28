@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as CekResiIndexRouteImport } from './routes/cek-resi/index'
+import { Route as CekOngkirIndexRouteImport } from './routes/cek-ongkir/index'
 import { Route as CekResiIdRouteImport } from './routes/cek-resi/$id'
 import { Route as DashboardPengirimanIndexRouteImport } from './routes/dashboard/pengiriman/index'
 import { Route as DemoStartServerFuncsRouteImport } from './routes/demo/start.server-funcs'
@@ -32,6 +33,11 @@ const IndexRoute = IndexRouteImport.update({
 const CekResiIndexRoute = CekResiIndexRouteImport.update({
   id: '/cek-resi/',
   path: '/cek-resi/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CekOngkirIndexRoute = CekOngkirIndexRouteImport.update({
+  id: '/cek-ongkir/',
+  path: '/cek-ongkir/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CekResiIdRoute = CekResiIdRouteImport.update({
@@ -102,6 +108,7 @@ const DashboardPengirimanIdEditRoute =
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/cek-resi/$id': typeof CekResiIdRoute
+  '/cek-ongkir': typeof CekOngkirIndexRoute
   '/cek-resi': typeof CekResiIndexRoute
   '/dashboard/pengiriman/create': typeof DashboardPengirimanCreateRoute
   '/demo/api/names': typeof DemoApiNamesRoute
@@ -118,6 +125,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/cek-resi/$id': typeof CekResiIdRoute
+  '/cek-ongkir': typeof CekOngkirIndexRoute
   '/cek-resi': typeof CekResiIndexRoute
   '/dashboard/pengiriman/create': typeof DashboardPengirimanCreateRoute
   '/demo/api/names': typeof DemoApiNamesRoute
@@ -135,6 +143,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/cek-resi/$id': typeof CekResiIdRoute
+  '/cek-ongkir/': typeof CekOngkirIndexRoute
   '/cek-resi/': typeof CekResiIndexRoute
   '/dashboard/pengiriman/create': typeof DashboardPengirimanCreateRoute
   '/demo/api/names': typeof DemoApiNamesRoute
@@ -153,6 +162,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/cek-resi/$id'
+    | '/cek-ongkir'
     | '/cek-resi'
     | '/dashboard/pengiriman/create'
     | '/demo/api/names'
@@ -169,6 +179,7 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/cek-resi/$id'
+    | '/cek-ongkir'
     | '/cek-resi'
     | '/dashboard/pengiriman/create'
     | '/demo/api/names'
@@ -185,6 +196,7 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/cek-resi/$id'
+    | '/cek-ongkir/'
     | '/cek-resi/'
     | '/dashboard/pengiriman/create'
     | '/demo/api/names'
@@ -202,6 +214,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   CekResiIdRoute: typeof CekResiIdRoute
+  CekOngkirIndexRoute: typeof CekOngkirIndexRoute
   CekResiIndexRoute: typeof CekResiIndexRoute
   DashboardPengirimanCreateRoute: typeof DashboardPengirimanCreateRoute
   DemoApiNamesRoute: typeof DemoApiNamesRoute
@@ -230,6 +243,13 @@ declare module '@tanstack/react-router' {
       path: '/cek-resi'
       fullPath: '/cek-resi'
       preLoaderRoute: typeof CekResiIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/cek-ongkir/': {
+      id: '/cek-ongkir/'
+      path: '/cek-ongkir'
+      fullPath: '/cek-ongkir'
+      preLoaderRoute: typeof CekOngkirIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/cek-resi/$id': {
@@ -322,6 +342,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   CekResiIdRoute: CekResiIdRoute,
+  CekOngkirIndexRoute: CekOngkirIndexRoute,
   CekResiIndexRoute: CekResiIndexRoute,
   DashboardPengirimanCreateRoute: DashboardPengirimanCreateRoute,
   DemoApiNamesRoute: DemoApiNamesRoute,

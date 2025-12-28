@@ -2,7 +2,8 @@ import {
   Home,
   Package2,
   Truck,
-  Receipt
+  Receipt,
+  BadgeDollarSign
 } from "lucide-react"
 import { Link } from "@tanstack/react-router"
 import {
@@ -35,6 +36,11 @@ const items = [
     url: "/cek-resi",
     icon: Receipt,
   },
+  {
+    title: "Cek Ongkir",
+    url: "/cek-ongkir",
+    icon: BadgeDollarSign,
+  }
 ]
 
 // Menu Demo (Dari Header lama Anda)
